@@ -10,7 +10,18 @@ do
 	VMS+=("$arg")
 done
 
+errors=0
+
 for i in "${VMS[@]}"
 do
 	vagrant up "$i" && vagrant ssh --command 'sudo salt '"$i"' state.apply'
+	if [ $? -ne 0 ]; then
+	    errors=1
+	fi
 done
+
+if [ errors -eq 0 ]; then
+    echo -e "\nAll virtual machines are up and states have been applied. You are free to proceed.\n\n"
+else
+    echo -e "\nSome virtual machine states have not applied. Blame the lazy minions and re-run this script to fix the problem.\n\n"
+fi
