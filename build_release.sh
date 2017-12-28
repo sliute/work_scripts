@@ -14,6 +14,18 @@
 #  |-releases
 #  |-tmp
 
+# Ensure only two arguments have been provided.
+if [ "$#" -ne 2 ]; then
+    echo -e "\nPlease provide two arguments: a project file name and a sprint number.\n"
+    exit
+fi
+
+# Ensure second argument is a 1- or 2-digit integer.
+if ! [[ "$2" =~ ^[0-9]{1,2}$ ]]; then
+    echo -e "\nPlease make sure your second argument is a 1- or 2-digit positive integer (e.g. 11).\n"
+    exit 2
+fi
+
 DIRS=(releases tmp)
 for dir in "$DIRS"
 do
