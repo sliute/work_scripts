@@ -12,12 +12,12 @@ sudo apt update && apt -y upgrade
 
 
 # Gnome, FTW.
-sudo apt -y install gnome-session gnome-shell-extensions gnome-tweak-tool
+sudo apt -y install gnome-session gnome-shell-extensions gnome-tweak-tool ubuntu-gnome-desktop
 sudo update-alternatives --config gdm3.css
 
 # Languages: PHP
 # Install latest PHP version and utilities.
-sudo apt -y install php php-xdebug composer
+sudo apt -y install php php-xdebug composer php-curl php-xml php-zip
 
 # Languages: Python
 # Install Python 2.7 and pip for both 2.7 and 3.x
