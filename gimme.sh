@@ -13,7 +13,9 @@ fi
 
 args=( "$@" )
 repo=${args[0]}
-foldername=$(echo $repo | cut -d'_' -f2)
+# Folder name is everything after (and not including) the first underscore
+# in the repo name.
+foldername=$(echo $repo | grep -oP '(?<=_)(.*)')
 
 if [ "$#" -eq 1 ]; then
     branch='master'
@@ -21,7 +23,7 @@ else
     branch=${args[1]}
 fi
 
-git clone git@bitbucket.org:avadolearning/$repo $foldername 
+git clone git@bitbucket.org:avadolearning/$repo $foldername
 if [ $? -ne 0 ]; then
     echo -e "\nFailure: Most likely, the repo name you provided does not exist. Please check the stack trace above and retry.\n"
     exit
@@ -35,4 +37,3 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "\nSuccess: The $repo repository is now available in the $foldername folder, and its current branch is $branch.\n"
-
