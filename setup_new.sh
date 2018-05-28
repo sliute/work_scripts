@@ -12,7 +12,7 @@ sudo apt update && apt -y upgrade
 
 
 # Gnome, FTW.
-sudo apt -y install gnome-session gnome-shell-extensions gnome-tweak-tool ubuntu-gnome-desktop
+sudo apt -y install gnome-session gnome-shell gnome-shell-extensions gnome-tweak-tool ubuntu-gnome-desktop
 sudo update-alternatives --config gdm3.css
 
 # Languages: PHP
